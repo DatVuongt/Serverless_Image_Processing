@@ -15,12 +15,13 @@ Before deploying or testing this project, ensure you have:
  1. AWS Account with access to S3, Lambda, Step Functions, and API Gateway
  2. Python 3.x (for Lambda function)
  3. Pillow library installed via Lambda Layer:
-    + Go to KLayers GitHub
+    + Go to KLayers GitHub [https://github.com/keithrozario/Klayers/tree/master/deployments]
     + Select your Python version
     + Open the corresponding HTML file
     + Copy the ARN of the Pillow layer
     + In the Lambda console, go to your function → Add Layer → Provide Layer Version ARN
  4. Proper IAM roles and permissions set up so services can communicate (Lambda can access S3, Step Functions can invoke Lambda, API Gateway can start Step Functions, etc.)
+
 ⚠️ You may encounter the need to configure IAM roles during setup to allow secure service-to-service communication.
 
 ## 🚀 Deployment Instructions
@@ -31,6 +32,7 @@ Before deploying or testing this project, ensure you have:
 2️⃣ Go to the AWS Lambda Console and create a new function (or open your existing one).
    1. Upload your Python file (resize_image.py) directly. You can either:
      + Copy-paste the code in the inline editor, or
+
      + Upload it as a .zip containing only your Python file.
    2. Add the Pillow Lambda layer as described in the Prerequisites
    3. Set the environment variable for the destination bucket:
@@ -45,7 +47,7 @@ Before deploying or testing this project, ensure you have:
 
 4️⃣ Configure API Gateway to trigger Step Functions
   1. Go to API Gateway -> APIs, Choose REST API and select import
-  2. After importing `api-definition.json`, go to:
+  2. After importing `API_Gateway/api-definition.json`, go to:
    `API Gateway → Your API → Resources → /resize → POST Integration Request`
   3. Set **Integration type** to **AWS Service**  
    - AWS Region: `ca-central-1`   #or whatever region you want
@@ -66,7 +68,7 @@ Before deploying or testing this project, ensure you have:
 
 5️⃣ Test the Workflow
   ### Once deployed, you can test the /resize endpoint:
-  1. Invoke URL placeholder: https://<your-api-id>.execute-api.<region>.amazonaws.com/prod/resize
+  1. Invoke URL placeholder: [https://<your-api-id>.execute-api.<region>.amazonaws.com/prod/resize] #Go to `API Gateway → Your API → Dashboard → Invoke URL`
   2. Headers: Content-Type: application/json
   3. Body:
         {
