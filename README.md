@@ -31,8 +31,9 @@ Before deploying or testing this project, ensure you have:
 
 2️⃣ Go to the AWS Lambda Console and create a new function (or open your existing one).
    1. Upload your Python file (resize_image.py) directly. You can either:
-     + Copy-paste the code in the inline editor, or
 
+     + Copy-paste the code in the inline editor
+     
      + Upload it as a .zip containing only your Python file.
    2. Add the Pillow Lambda layer as described in the Prerequisites
    3. Set the environment variable for the destination bucket:
